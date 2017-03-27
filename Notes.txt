@@ -1,1 +1,17 @@
 D3 stands for 'Data-Driven Documents'
+
+D3 Selections - Wrapped in D3 selection prototype methods
+  d3.select('div') - selects first matching element
+  d3.selectAll('div') - returns array of all matching elements
+
+Change style of elements
+  d3.select('div').style('color', 'orange') - Changes the text in div to orange
+  d3.select('div').style({'color': 'blue', 'font-size': '40px'}) - Changes multiple styles
+
+Classed method.  Returns true or false if the element has the class
+  d3.selectAll('.house').classed('house') -> true
+    -Note that ALL elements in this selection must have the class to return true
+  Can also ASSIGN classes by adding true as a second argument
+    d3.selectAll('div').classed('frog', true)
+  Or REMOVE class by adding false
+    d3.selectAll('div').classed('house', false)
