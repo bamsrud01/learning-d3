@@ -23,3 +23,12 @@ SVG = Scalable Vector Graphics
     mySVG = d3.select('body').append('svg');
     mySVG.append('circle');
     mySVG.attr('cx', 200).attr('cy', 200);
+
+Asynchronous request methods in D3 (AJAX)
+  -Methods include: d3.json, d3.csv, d3.text, d3.html, d3.tsv, and d3.xml
+    d3.csv('climate_data.csv', function(error, data) {
+      console.log(error);   //  Will be null if no error
+      console.log(data);    //  Will display returned data
+    });
+    -CSV files will be returned as an array of objects.  Each item in the array is a row, and is an object with properties of column names, and values of that row
+    
