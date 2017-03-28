@@ -15,3 +15,11 @@ Classed method.  Returns true or false if the element has the class
     d3.selectAll('div').classed('frog', true)
   Or REMOVE class by adding false
     d3.selectAll('div').classed('house', false)
+
+
+SVG = Scalable Vector Graphics
+  -Examples include circles and lines
+  -In D3, SVGs can be created and modified:
+    mySVG = d3.select('body').append('svg');
+    mySVG.append('circle');
+    mySVG.attr('cx', 200).attr('cy', 200);
