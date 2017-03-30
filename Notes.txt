@@ -31,4 +31,30 @@ Asynchronous request methods in D3 (AJAX)
       console.log(data);    //  Will display returned data
     });
     -CSV files will be returned as an array of objects.  Each item in the array is a row, and is an object with properties of column names, and values of that row
-    
+
+Data Binding
+  -Elements in the DOM can be created based on specific data, and the bound data can be accessed from the element itself
+  -This allows elements to have unique attributes based on the specific data
+  -Example:
+
+      //  Create an empty svg element with id of 'viz'
+      var viz = d3.select("#viz-wrapper")
+        .append('svg')
+        .attr('id', 'viz');
+
+      //  Ghost selection - making an empty selection:
+      d3.csv('climate_data.csv', function(data) {
+
+        dots = viz.selectAll('circle')  //  There are no circle elements within the 'viz' element, so this is a ghost selection
+                     .data(data)  //  Bind all the data (from the callback arguments) to circles (but there are none yet)
+                     .enter()   //  Selects all elements from data that were not matched to an element in the DOM
+                    .append('circle');    //  Appends a new 'circle' element with bound data from all elements return from .data() method
+
+      //  TMAX is a property of the data, a number representing the temperature for each element
+       dots.attr('r', function(d) {return d.TMAX});
+
+       dots.attr('r', function(d) {return Math.abs(d.TMAX)});
+
+       dots.attr('r', function(d) {return Math.abs(d.TMAX) / 100});
+
+    });
