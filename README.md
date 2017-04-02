@@ -7,4 +7,4 @@ This project follows Treehouse's 'D3.js' course
 ## Author
 
 - Barrett Amsrud
-- March 2017
+- March 2017 - April 2017
