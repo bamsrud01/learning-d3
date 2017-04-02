@@ -58,3 +58,8 @@ Data Binding
        dots.attr('r', function(d) {return Math.abs(d.TMAX) / 100});
 
     });
+
+Linear Scales
+-Data visualization requires meaning to be easily understandable
+-Remember that in the application, the y-scale goes from top down, unlike standard scale from bottom up
+  ds.scale.linear.range([height, 0]);
