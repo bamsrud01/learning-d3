@@ -3,35 +3,49 @@
   <title>A D3 map</title>
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="source/neighborhoods.js"></script>
+  <script src="source/rodents.js"></script>
 </head>
 <body>
   <script>
-var width = 700,
-    height = 580;
+  var width = 700,
+      height = 580;
 
-var svg = d3.select( "body" )
-  .append( "svg" )
-  .attr( "width", width )
-  .attr( "height", height );
+  var svg = d3.select( "body" )
+    .append( "svg" )
+    .attr( "width", width )
+    .attr( "height", height );
 
-var g = svg.append( "g" );
+  var g = svg.append( "g" );
 
-var albersProjection = d3.geo.albers()      //  D3 has a bunch of built-in map projections
-  .scale( 190000 )
-  .rotate( [71.057,0] )
-  .center( [0, 42.313] )
-  .translate( [width/2,height/2] );
+  var albersProjection = d3.geo.albers()      //  D3 has a bunch of built-in map projections
+    .scale( 190000 )
+    .rotate( [71.057,0] )
+    .center( [0, 42.313] )
+    .translate( [width/2,height/2] );
 
-var geoPath = d3.geo.path()                 //  Takes the json coordinates, converts to screen coordinates, and returns an SVG 'path', a free-form shape
-    .projection( albersProjection );
+  var geoPath = d3.geo.path()                 //  Takes the json coordinates, converts to screen coordinates, and returns an SVG 'path', a free-form shape
+      .projection( albersProjection );
 
-g.selectAll( "path" )                       //  A 'path' is a free-form SVG shape
-  .data( neighborhoods_json.features )
-  .enter()
-  .append( "path" )
-  .attr( "fill", "#ccc" )
-  .attr( "d", geoPath );                    //  'd' is a coordinate of an SVG path.  Remember that geoPath is a function
+  g.selectAll( "path" )                       //  A 'path' is a free-form SVG shape
+    .data( neighborhoods_json.features )
+    .enter()
+    .append( "path" )
+    .attr( "fill", "#ccc" )
+    .attr( "d", geoPath );                    //  'd' is a coordinate of an SVG path.  Remember that geoPath is a function
+
+  //  Now let's add rats!
+  let rodents = svg.append( "g" );
+
+  rodents.selectAll( "path" )
+    .data( rodents_json.features )
+    .enter()
+    .append( "path" )
+    .attr( "fill", "#900" )
+    .attr( "stroke", "#999" )
+    .attr( "d", geoPath );
+
 
   </script>
+  <script src="rodents.js"></script>
 </body>
 </html>
