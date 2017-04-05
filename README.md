@@ -9,7 +9,7 @@ This project follows various tutorials and learning resources for D3.js
 
 ### 02 - Mapping With D3
   - Learning mapping with D3
-  - Source: http://maptimeboston.github.io/d3-maptime/
+  - Source: http://maptimeboston.github.io/d3-maptime/ (Rat Map)
 
 ## Features
 
