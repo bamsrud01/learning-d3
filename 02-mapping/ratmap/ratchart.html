@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>A D3 chart</title>
+  <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <svg width="100" height="150">
+    <rect x="0" width="15" fill="#d1c9b8"></rect>
+    <rect x="25" width="15" fill="#d1c9b8"></rect>
+    <rect x="50" width="15" fill="#d1c9b8"></rect>
+    <rect x="75" width="15" fill="#d1c9b8"></rect>
+  </svg>
+  <script>
+  //  Initialize data for Rat Chart
+  let ratData = [400, 900, 300, 600];
+
+  //  Example:
+  d3.selectAll('rect')                //  Select all rectangle SVG elements
+    .data(ratData)                    //  Bind ratData to selected elements
+    .attr('height', function(d) {     //  Set the rectangle height attribute based on data, 'd'
+      return d/10 * 1.5;                  //  Returned value will be set to height attribute
+    })                                    //  NOTE: This function can take a second parameter, 'i', for index: function(d,i) {Do stuff}
+    .attr('y', function(d) {          //  Moves all rectangles DOWN on the y axis by subtracting the height by 150
+      return 150 - d/10 * 1.5;            //  Now all rectangles appear to start from the same level as in a standard bar graph
+    });
+
+  //  Method chaining allowed, because .data(), .attr() methods return the selection once complete
+  </script>
+</body>
+</html>
