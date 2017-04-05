@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>A D3 chart</title>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <script>
+  //  Initialize rat data, like last time
+  let ratData = [ 400, 900, 300, 600 ];
+
+  //  This time, we will create the SVG elements from the script rather than hard-coded into the HTML
+  let svg = d3.select('body')
+    .append('svg')                      //  Unlike jQuery, .append() takes only the element name, not markup
+    .attr('width', 500)                     //  Also, unlike jQuery, it returns the appended element, not the parent
+    .attr('height', 150);
+
+  //  This code is similar to the last ratchart, but with some key differences:
+  svg.selectAll( "rect" )               //  At this point, these rectangles do not yet exist.  It will return a placeholder selection
+  .data( ratData )
+  .enter()                              //  .enter() refers to data which does not yet have an existing DOM element, preparing it to append
+  .append( "rect" )
+    .attr( "x", function(d,i){
+      return i*25;                      //  Returns x location of each rectangle
+    })
+    .attr( "width", 15 )
+    .attr( "fill", "#d1c9b8" )
+    .attr( "height", function(d){
+      return d/10 * 1.5;
+    })
+    .attr( "y", function(d){
+      return 150 - d/10 * 1.5;
+    });
+
+    //  NOTE:   Like .enter() contains data for which there is no DOM element, .exit() contains DOM elements for which there is no data
+        //  They can be removed simply by using selection.exit().remove();
+  </script>
+</body>
+</html>
